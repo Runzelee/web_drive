@@ -25,8 +25,6 @@ RUN addgroup -S frp \
  && mv /entrypoint.sh /frp/ \
  && sh /frp/entrypoint.sh
 
-ADD frps.toml /frp/frps.toml
-
 EXPOSE 3000 7000 8080
 
 ENTRYPOINT ["runsvdir", "/etc/service"]
