@@ -22,9 +22,9 @@ RUN addgroup -S frp \
  && rm -rf frp.tar.gz \
  && mv frp_*_linux_amd64 /frp \
  && chown -R frp:frp /frp \
- && mv /entrypoint.sh /frp/
+ && mv /entrypoint.sh /frp/ \
+ && sh /frp/entrypoint.sh
 
 EXPOSE 3000 7000 8080
 
 ENTRYPOINT ["runsvdir", "/etc/service"]
-
