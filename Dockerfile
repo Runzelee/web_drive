@@ -5,8 +5,9 @@ COPY ./content /workdir/
 RUN apk add --no-cache curl runit bash tzdata \
     && chmod +x /workdir/service/*/run \
     && sh /workdir/install.sh \
-    && rm /workdir/install.sh 
-    
+    && rm /workdir/install.sh \
+    && ln -s /workdir/service/* /etc/service/
+
 ENV PORT=3000
 ENV TZ=UTC
 ENV FRP_VERSION=v0.57.0
@@ -22,8 +23,6 @@ RUN addgroup -S frp \
  && mv frp_*_linux_amd64 /frp \
  && chown -R frp:frp /frp \
  && mv /entrypoint.sh /frp/
-
-USER frp
 
 EXPOSE 3000 7000 8080
 
