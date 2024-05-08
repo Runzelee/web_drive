@@ -5,8 +5,8 @@ COPY ./content /workdir/
 RUN apk add --no-cache curl runit bash tzdata \
     && chmod +x /workdir/service/*/run \
     && sh /workdir/install.sh \
-    && rm /workdir/install.sh \
-
+    && rm /workdir/install.sh 
+    
 ENV PORT=3000
 ENV TZ=UTC
 ENV FRP_VERSION=v0.57.0
