@@ -23,12 +23,10 @@ RUN addgroup -S frp \
  && mv frp_*_linux_amd64 /frp \
  && chown -R frp:frp /frp \
  && mv /entrypoint.sh /frp/ \
- && rm /frp/frps.toml
+ && sh /frp/entrypoint.sh
 
 ADD frps.toml /frp/frps.toml
 
 EXPOSE 3000 7000 8080
-
-CMD ["/frp/entrypoint.sh"]
 
 ENTRYPOINT ["runsvdir", "/etc/service"]
